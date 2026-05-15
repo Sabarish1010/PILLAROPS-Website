@@ -1,0 +1,1423 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PILLAROPS | Powering Industrial Operations Through Intelligent Automation</title>
+    <meta name="description"
+        content="PILLAROPS delivers advanced workforce management, automation platforms, and enterprise operational solutions for global industrial clients.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap"
+        rel="stylesheet">
+    <style>
+        /* CSS Variables */
+        :root {
+            --primary: #0a4d9c;
+            /* Corporate Blue */
+            --primary-light: #2563eb;
+            --secondary: #0ea5e9;
+            /* Energy Blue */
+            --accent: #f59e0b;
+            /* Amber/Orange */
+            --success: #10b981;
+
+            /* Dark Theme Colors */
+            --bg-dark: #0f172a;
+            --bg-darker: #020617;
+            --surface-dark: rgba(30, 41, 59, 0.6);
+            --surface-dark-solid: #1e293b;
+
+            /* Light Theme Colors */
+            --bg-light: #f8fafc;
+            --bg-lighter: #ffffff;
+            --surface-light: rgba(255, 255, 255, 0.7);
+            --surface-light-solid: #f1f5f9;
+
+            /* Text Colors */
+            --text-light: #f1f5f9;
+            --text-muted-light: #94a3b8;
+            --text-dark: #0f172a;
+            --text-muted-dark: #475569;
+
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+
+            --font-main: 'Inter', sans-serif;
+            --font-display: 'Space Grotesk', sans-serif;
+        }
+
+        [data-theme="light"] {
+            --bg-dark: var(--bg-light);
+            --bg-darker: var(--bg-lighter);
+            --surface-dark: var(--surface-light);
+            --surface-dark-solid: var(--surface-light-solid);
+            --text-light: var(--text-dark);
+            --text-muted-light: var(--text-muted-dark);
+            --glass-border: rgba(0, 0, 0, 0.05);
+            --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.05);
+        }
+
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg-darker);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        /* Typography */
+        h1,
+        h2,
+        h3,
+        h4,
+        h5 {
+            font-family: var(--font-display);
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, var(--secondary), var(--primary-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-muted-light);
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            font-size: 1.1rem;
+        }
+
+        /* Layout */
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 6rem 0;
+            position: relative;
+        }
+
+        /* Utilities */
+        .glass {
+            background: var(--surface-dark);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            box-shadow: var(--glass-shadow);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            background: rgba(14, 165, 233, 0.1);
+            color: var(--secondary);
+            border: 1px solid rgba(14, 165, 233, 0.2);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.8rem;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-family: var(--font-main);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.6);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--glass-border);
+            color: var(--text-light);
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: var(--text-muted-light);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            background: var(--surface-dark);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--glass-border);
+            padding: 0.8rem 0;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+        }
+
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 8px;
+            display: grid;
+            place-items: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            font-weight: 600;
+            font-size: 1.05rem;
+            transition: color 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background: var(--secondary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--secondary);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .theme-toggle {
+            background: transparent;
+            border: none;
+            color: var(--text-light);
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 50%;
+            transition: background 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: transparent;
+            border: none;
+            color: var(--text-light);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Logo Image Enhancements */
+        .logo-img {
+            height: 130px;
+            /* Increased size */
+            width: auto;
+            max-width: 350px;
+            object-fit: contain;
+            transition: all 0.3s ease;
+        }
+
+        [data-theme="dark"] .logo-img {
+            background-color: #ffffff;
+            padding: 8px 16px;
+            border-radius: 12px;
+        }
+
+        /* View Logic */
+        .view {
+            display: none;
+            opacity: 0;
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        .view.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 6rem;
+            background: radial-gradient(circle at 80% 20%, rgba(14, 165, 233, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 20% 80%, rgba(37, 99, 235, 0.1) 0%, transparent 40%);
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            letter-spacing: -1px;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-muted-light);
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .hero-visual {
+            position: relative;
+        }
+
+        .dashboard-mockup {
+            width: 100%;
+            height: 400px;
+            background: var(--bg-dark);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 1rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dashboard-header {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #ef4444;
+        }
+
+        .dot:nth-child(2) {
+            background: #f59e0b;
+        }
+
+        .dot:nth-child(3) {
+            background: #10b981;
+        }
+
+        .dashboard-body {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 1rem;
+            height: calc(100% - 30px);
+        }
+
+        .dash-sidebar {
+            background: var(--surface-dark-solid);
+            border-radius: 8px;
+        }
+
+        .dash-main {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .dash-card {
+            background: var(--surface-dark-solid);
+            border-radius: 8px;
+            flex: 1;
+        }
+
+        /* Floating Elements */
+        .float-el {
+            position: absolute;
+            background: var(--surface-dark);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            padding: 1rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .float-1 {
+            top: -20px;
+            right: -20px;
+            animation-delay: 0s;
+        }
+
+        .float-2 {
+            bottom: 40px;
+            left: -40px;
+            animation-delay: 2s;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        /* Highlights Logo Strip */
+        .highlights {
+            padding: 3rem 0;
+            border-top: 1px solid var(--glass-border);
+            border-bottom: 1px solid var(--glass-border);
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        [data-theme="light"] .highlights {
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        .highlights-track {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .highlight-item {
+            font-weight: 600;
+            color: var(--text-muted-light);
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* Grid Cards (Services/Features) */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            padding: 2.5rem;
+            border-radius: 16px;
+            background: var(--surface-dark);
+            border: 1px solid var(--glass-border);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--secondary);
+            box-shadow: 0 10px 30px rgba(14, 165, 233, 0.1);
+        }
+
+        .card-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(14, 165, 233, 0.1);
+            color: var(--secondary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .card p {
+            color: var(--text-muted-light);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Split Section (Why Choose Us) */
+        .split-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .list-items li {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .list-icon {
+            color: var(--success);
+            font-size: 1.2rem;
+            margin-top: 0.2rem;
+        }
+
+        /* Testimonials */
+        .testimonial-card {
+            padding: 2rem;
+            background: var(--surface-dark-solid);
+            border-radius: 16px;
+            border: 1px solid var(--glass-border);
+        }
+
+        .client-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .client-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--glass-border);
+        }
+
+        .client-details h4 {
+            margin: 0;
+            font-size: 1rem;
+            font-family: var(--font-main);
+        }
+
+        .client-details p {
+            margin: 0;
+            font-size: 0.85rem;
+            color: var(--text-muted-light);
+        }
+
+        /* Forms */
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--glass-border);
+            border-radius: 8px;
+            color: var(--text-light);
+            font-family: var(--font-main);
+            transition: all 0.3s ease;
+        }
+
+        [data-theme="light"] .form-control {
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.2);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* Career Job Cards */
+        .job-card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem;
+            background: var(--surface-dark);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .job-card:hover {
+            border-color: var(--primary-light);
+            background: var(--surface-dark-solid);
+        }
+
+        .job-info h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .job-meta {
+            display: flex;
+            gap: 1rem;
+            color: var(--text-muted-light);
+            font-size: 0.9rem;
+        }
+
+        .job-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-dark);
+            padding: 5rem 0 2rem;
+            border-top: 1px solid var(--glass-border);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        .footer-col h4 {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-col p {
+            color: var(--text-muted-light);
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: var(--text-muted-light);
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--surface-dark-solid);
+            display: grid;
+            place-items: center;
+            transition: all 0.3s ease;
+            border: 1px solid var(--glass-border);
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--glass-border);
+            color: var(--text-muted-light);
+            font-size: 0.9rem;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        /* Animations for Scroll */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+
+            .hero-grid,
+            .split-section {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .hero {
+                padding-top: 8rem;
+                text-align: center;
+            }
+
+            .hero-btns {
+                justify-content: center;
+            }
+
+            .float-el {
+                display: none;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background: var(--bg-darker);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: left 0.3s ease;
+                padding: 2rem;
+                gap: 2rem;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .job-card {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1.5rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="container nav-container">
+            <div class="logo" onclick="switchView('home')">
+                <img src="logo.png" alt="PILLAROPS Logo" class="logo-img">
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a data-target="home" class="active">Home</a></li>
+                <li><a data-target="about">About Us</a></li>
+                <li><a data-target="services">Services</a></li>
+                <li><a data-target="careers">Careers</a></li>
+                <li><a data-target="contact">Contact Us</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle Theme">
+                    🌙
+                </button>
+                <button class="btn btn-primary" onclick="switchView('contact')">Request Demo</button>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT AREA -->
+    <main>
+
+        <!-- ================= HOME VIEW ================= -->
+        <div id="view-home" class="view active">
+            <!-- Hero Section -->
+            <section class="hero">
+                <div class="container hero-grid">
+                    <div class="hero-content reveal active">
+                        <span class="badge">Enterprise Grade SaaS</span>
+                        <h1>Transforming Oil & Gas Operations with <span class="text-gradient">Intelligent
+                                Automation</span></h1>
+                        <p>PILLAROPS delivers advanced workforce management, automation platforms, and enterprise
+                            operational solutions for global industrial clients.</p>
+                        <div class="hero-btns">
+                            <button class="btn btn-primary" onclick="switchView('contact')">Request Demo</button>
+                            <button class="btn btn-outline" onclick="switchView('services')">Explore Solutions</button>
+                        </div>
+                    </div>
+                    <div class="hero-visual reveal active" style="transition-delay: 0.2s;">
+                        <div class="dashboard-mockup">
+                            <div class="dashboard-header">
+                                <div class="dot"></div>
+                                <div class="dot"></div>
+                                <div class="dot"></div>
+                            </div>
+                            <div class="dashboard-body">
+                                <div class="dash-sidebar"></div>
+                                <div class="dash-main">
+                                    <div class="dash-card"></div>
+                                    <div style="display: flex; gap: 1rem; flex: 1;">
+                                        <div class="dash-card"></div>
+                                        <div class="dash-card"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="float-el float-1">
+                                <div style="font-size: 0.8rem; color: var(--text-muted-light)">System Status</div>
+                                <div style="color: var(--success); font-weight: bold;">Optimal 99.9%</div>
+                            </div>
+                            <div class="float-el float-2">
+                                <div style="font-size: 0.8rem; color: var(--text-muted-light)">Active Workers</div>
+                                <div style="font-weight: bold; font-size: 1.2rem;">1,248</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Company Highlights -->
+            <div class="highlights">
+                <div class="container highlights-track">
+                    <span class="highlight-item">Startup Innovation Driven</span>
+                    <span class="highlight-item">Enterprise Automation</span>
+                    <span class="highlight-item">International Ready</span>
+                    <span class="highlight-item">Secure Cloud</span>
+                    <span class="highlight-item">Real-Time Data</span>
+                </div>
+            </div>
+
+            <!-- Features / Why Choose Us -->
+            <section class="container" style="padding-top: 6rem;">
+                <div class="split-section reveal">
+                    <div>
+                        <span class="badge">Why Choose PILLAROPS</span>
+                        <h2>Smart Technology for Modern Energy Operations</h2>
+                        <p style="color: var(--text-muted-light); margin-bottom: 2rem;">We bridge the gap between heavy
+                            industrial operations and cutting-edge digital technology, ensuring scalability, safety, and
+                            efficiency.</p>
+                        <ul class="list-items">
+                            <li><span class="list-icon">✓</span>
+                                <div><strong>Industry-focused expertise</strong><br><span
+                                        style="color: var(--text-muted-light); font-size: 0.9rem;">Built specifically
+                                        for Oil & Gas contractors and EPC firms.</span></div>
+                            </li>
+                            <li><span class="list-icon">✓</span>
+                                <div><strong>Scalable enterprise systems</strong><br><span
+                                        style="color: var(--text-muted-light); font-size: 0.9rem;">Grows with your
+                                        international operations.</span></div>
+                            </li>
+                            <li><span class="list-icon">✓</span>
+                                <div><strong>Real-time operational insights</strong><br><span
+                                        style="color: var(--text-muted-light); font-size: 0.9rem;">Data-driven decisions
+                                        powered by AI analytics.</span></div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="glass" style="padding: 3rem;">
+                        <h3>Features Overview</h3>
+                        <div style="display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1.5rem;">
+                            <span class="badge"
+                                style="background: var(--surface-dark-solid); color: var(--text-light); border-color: var(--glass-border)">Smart
+                                Dashboards</span>
+                            <span class="badge"
+                                style="background: var(--surface-dark-solid); color: var(--text-light); border-color: var(--glass-border)">Cloud
+                                Access</span>
+                            <span class="badge"
+                                style="background: var(--surface-dark-solid); color: var(--text-light); border-color: var(--glass-border)">AI
+                                Insights</span>
+                            <span class="badge"
+                                style="background: var(--surface-dark-solid); color: var(--text-light); border-color: var(--glass-border)">Role-Based
+                                Access</span>
+                            <span class="badge"
+                                style="background: var(--surface-dark-solid); color: var(--text-light); border-color: var(--glass-border)">API
+                                Integrations</span>
+                            <span class="badge"
+                                style="background: var(--surface-dark-solid); color: var(--text-light); border-color: var(--glass-border)">Secure
+                                Data</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ================= ABOUT US VIEW ================= -->
+        <div id="view-about" class="view">
+            <section class="container" style="padding-top: 10rem;">
+                <div class="split-section reveal">
+                    <div>
+                        <span class="badge">About Us</span>
+                        <h1 style="font-size: 3rem;">Engineering Digital Efficiency</h1>
+                        <p style="color: var(--text-muted-light); font-size: 1.1rem; margin-bottom: 1.5rem;">
+                            Based in Chennai, India, PILLAROPS is an Oil & Gas Technology Solutions startup focused on
+                            automation, digital transformation, and workforce operations.
+                        </p>
+                        <p style="color: var(--text-muted-light); font-size: 1.1rem;">
+                            We provide scalable software solutions for oil & gas contractors, pipeline companies,
+                            industrial plants, and energy sector enterprises globally, bridging the gap between heavy
+                            industry and modern SaaS capabilities.
+                        </p>
+                    </div>
+                    <div class="glass"
+                        style="padding: 3rem; background: linear-gradient(135deg, rgba(10, 77, 156, 0.1), rgba(14, 165, 233, 0.05)); border: 1px solid var(--primary-light);">
+                        <h3 class="text-gradient">Our Mission</h3>
+                        <p style="margin-bottom: 2rem;">"To empower industrial enterprises with intelligent automation
+                            solutions that improve operational efficiency, workforce productivity, and business
+                            performance."</p>
+
+                        <h3 class="text-gradient">Our Vision</h3>
+                        <p>"To become a globally recognized industrial technology partner driving the future of digital
+                            energy operations."</p>
+                    </div>
+                </div>
+
+                <div style="margin-top: 6rem;" class="reveal">
+                    <h2 class="section-title">Core Values</h2>
+                    <div class="grid-4" style="margin-top: 3rem;">
+                        <div class="card" style="padding: 1.5rem;">
+                            <h4 style="color: var(--secondary)">Innovation</h4>
+                            <p style="font-size: 0.9rem;">Constantly pushing boundaries in industrial tech.</p>
+                        </div>
+                        <div class="card" style="padding: 1.5rem;">
+                            <h4 style="color: var(--secondary)">Reliability</h4>
+                            <p style="font-size: 0.9rem;">Systems built for mission-critical operations.</p>
+                        </div>
+                        <div class="card" style="padding: 1.5rem;">
+                            <h4 style="color: var(--secondary)">Excellence</h4>
+                            <p style="font-size: 0.9rem;">Uncompromising quality in software and support.</p>
+                        </div>
+                        <div class="card" style="padding: 1.5rem;">
+                            <h4 style="color: var(--secondary)">Sustainability</h4>
+                            <p style="font-size: 0.9rem;">Optimizing resources for a greener energy future.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ================= SERVICES VIEW ================= -->
+        <div id="view-services" class="view">
+            <section class="container" style="padding-top: 10rem;">
+                <div class="text-center reveal" style="text-align: center;">
+                    <span class="badge">Our Solutions</span>
+                    <h1 class="section-title">Automating the Future of Industrial Management</h1>
+                    <p class="section-subtitle">Comprehensive software platforms designed specifically for the
+                        complexities of the Oil & Gas and Heavy Industrial sectors.</p>
+                </div>
+
+                <div class="grid-3 reveal">
+                    <div class="card">
+                        <div class="card-icon">👷</div>
+                        <h3>Worker Management</h3>
+                        <p>Track certifications, manage shifts, monitor fatigue, and ensure compliance for your entire
+                            industrial workforce.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">📊</div>
+                        <h3>Data Automation</h3>
+                        <p>Streamline operations data capture from the field to the boardroom with real-time syncing and
+                            analytics.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">📄</div>
+                        <h3>Proposal Automation</h3>
+                        <p>Generate complex quotations and proposals instantly, integrating labor, material, and risk
+                            factors.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">⚙️</div>
+                        <h3>Asset Management</h3>
+                        <p>Predictive maintenance tracking, lifecycle management, and inventory control for critical
+                            industrial assets.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">📈</div>
+                        <h3>ERP Integration</h3>
+                        <p>Seamlessly connect field operations with enterprise resource planning systems like SAP and
+                            Oracle.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon">🤖</div>
+                        <h3>AI Optimization</h3>
+                        <p>Leverage machine learning to identify workflow bottlenecks and recommend operational
+                            efficiencies.</p>
+                    </div>
+                </div>
+
+                <div style="margin-top: 6rem;" class="reveal">
+                    <h2 class="section-title">Industries Served</h2>
+                    <div class="grid-4" style="margin-top: 3rem;">
+                        <div class="glass" style="padding: 1.5rem; text-align: center; font-weight: bold;">Oil & Gas
+                        </div>
+                        <div class="glass" style="padding: 1.5rem; text-align: center; font-weight: bold;">Pipeline
+                            Operations</div>
+                        <div class="glass" style="padding: 1.5rem; text-align: center; font-weight: bold;">Energy Sector
+                        </div>
+                        <div class="glass" style="padding: 1.5rem; text-align: center; font-weight: bold;">EPC
+                            Contractors</div>
+                        <div class="glass" style="padding: 1.5rem; text-align: center; font-weight: bold;">Manufacturing
+                        </div>
+                        <div class="glass" style="padding: 1.5rem; text-align: center; font-weight: bold;">Industrial
+                            Services</div>
+                        <div class="glass" style="padding: 1.5rem; text-align: center; font-weight: bold;">Logistics &
+                            Supply</div>
+                        <div class="glass" style="padding: 1.5rem; text-align: center; font-weight: bold;">Engineering
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ================= CAREERS VIEW ================= -->
+        <div id="view-careers" class="view">
+            <section class="container" style="padding-top: 10rem;">
+                <div class="split-section reveal" style="margin-bottom: 4rem;">
+                    <div>
+                        <span class="badge">Careers at PILLAROPS</span>
+                        <h1 style="font-size: 3rem;">Build the Future of Industrial Tech</h1>
+                        <p style="color: var(--text-muted-light); font-size: 1.1rem; margin-bottom: 1.5rem;">
+                            Join our dynamic team in Chennai and help build global solutions that power the world's most
+                            critical industries. We offer hybrid/remote opportunities and a culture of continuous
+                            learning.
+                        </p>
+                        <a href="#open-roles" class="btn btn-primary">View Open Roles</a>
+                    </div>
+                    <div class="glass" style="padding: 2rem; background: var(--surface-dark-solid);">
+                        <h3 style="margin-bottom: 1.5rem;">Why Join Us?</h3>
+                        <ul class="list-items">
+                            <li><span class="list-icon">🚀</span>
+                                <div><strong>Global Impact</strong></div>
+                            </li>
+                            <li><span class="list-icon">💻</span>
+                                <div><strong>Modern Tech Stack</strong></div>
+                            </li>
+                            <li><span class="list-icon">🌍</span>
+                                <div><strong>International Exposure</strong></div>
+                            </li>
+                            <li><span class="list-icon">📈</span>
+                                <div><strong>Rapid Career Growth</strong></div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div id="open-roles" class="reveal" style="padding-top: 2rem;">
+                    <h2 class="section-title" style="text-align: left;">Open Positions</h2>
+                    <div style="margin-top: 2rem; display: flex; flex-direction: column; gap: 1rem;">
+
+                        <div class="job-card">
+                            <div class="job-info">
+                                <h3>Senior Full Stack Developer (React/Node)</h3>
+                                <div class="job-meta">
+                                    <span>📍 Chennai (Hybrid)</span>
+                                    <span>💼 Engineering</span>
+                                    <span>⏱️ Full-time</span>
+                                </div>
+                            </div>
+                            <button class="btn btn-outline" onclick="switchView('contact')">Apply Now</button>
+                        </div>
+
+                        <div class="job-card">
+                            <div class="job-info">
+                                <h3>Product Manager - Industrial Solutions</h3>
+                                <div class="job-meta">
+                                    <span>📍 Remote / India</span>
+                                    <span>💼 Product</span>
+                                    <span>⏱️ Full-time</span>
+                                </div>
+                            </div>
+                            <button class="btn btn-outline" onclick="switchView('contact')">Apply Now</button>
+                        </div>
+
+                        <div class="job-card">
+                            <div class="job-info">
+                                <h3>Sales Executive (O&G Software)</h3>
+                                <div class="job-meta">
+                                    <span>📍 Chennai</span>
+                                    <span>💼 Sales</span>
+                                    <span>⏱️ Full-time</span>
+                                </div>
+                            </div>
+                            <button class="btn btn-outline" onclick="switchView('contact')">Apply Now</button>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ================= CONTACT VIEW ================= -->
+        <div id="view-contact" class="view">
+            <section class="container" style="padding-top: 10rem;">
+                <div class="text-center reveal" style="text-align: center; margin-bottom: 4rem;">
+                    <span class="badge">Get in Touch</span>
+                    <h1 class="section-title">Ready to Transform Your Operations?</h1>
+                    <p class="section-subtitle">Contact our team in Chennai for demos, business inquiries, or technical
+                        support.</p>
+                </div>
+
+                <div class="split-section reveal">
+                    <div class="glass" style="padding: 3rem;">
+                        <h3 style="margin-bottom: 2rem;">Send a Message</h3>
+                        <form
+                            onsubmit="event.preventDefault(); alert('Message sent successfully! Our team will contact you shortly.');">
+                            <div class="form-group">
+                                <label class="form-label">Full Name</label>
+                                <input type="text" class="form-control" required placeholder="John Doe">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Work Email</label>
+                                <input type="email" class="form-control" required placeholder="john@company.com">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Company / Industry</label>
+                                <input type="text" class="form-control" placeholder="Acme EPC Corp">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Inquiry Type</label>
+                                <select class="form-control">
+                                    <option>Request Demo</option>
+                                    <option>Sales Inquiry</option>
+                                    <option>Partnership</option>
+                                    <option>Careers (Apply)</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Message (or Paste Resume Link)</label>
+                                <textarea class="form-control" required placeholder="How can we help you?"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary" style="width: 100%;">Submit Inquiry</button>
+                        </form>
+                    </div>
+
+                    <div>
+                        <div class="card" style="margin-bottom: 2rem;">
+                            <h4 style="margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">📍 Global
+                                HQ</h4>
+                            <p style="color: var(--text-muted-light);">
+                                PILLAROPS Technology Solutions<br>
+                                IT Corridor, OMR<br>
+                                Chennai, Tamil Nadu, India - 600119
+                            </p>
+                        </div>
+                        <div class="card" style="margin-bottom: 2rem;">
+                            <h4 style="margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">✉️ Contact
+                                Details</h4>
+                            <p style="color: var(--text-muted-light); margin-bottom: 0.5rem;"><strong>Email:</strong>
+                                info@pillarops.com</p>
+                            <p style="color: var(--text-muted-light); margin-bottom: 0.5rem;"><strong>Support:</strong>
+                                support@pillarops.com</p>
+                            <p style="color: var(--text-muted-light);"><strong>Phone:</strong> +91 98765 43210</p>
+                        </div>
+
+                        <div class="glass"
+                            style="height: 200px; display: flex; align-items: center; justify-content: center; background: var(--surface-dark-solid);">
+                            <span style="color: var(--text-muted-light);">[ Interactive Map Integration Placeholder
+                                ]</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+    </main>
+
+    <!-- Global Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="logo" style="margin-bottom: 1.5rem;">
+                        <img src="logo.png" alt="PILLAROPS Logo" class="logo-img">
+                    </div>
+                    <p>Powering Industrial Operations Through Intelligent Automation. Enterprise-grade solutions for the
+                        global energy and heavy industries sector.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="LinkedIn">in</a>
+                        <a href="#" aria-label="Twitter">𝕏</a>
+                        <a href="#" aria-label="GitHub">gh</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul class="footer-links">
+                        <li><a onclick="switchView('about')" style="cursor: pointer;">About Us</a></li>
+                        <li><a onclick="switchView('careers')" style="cursor: pointer;">Careers</a></li>
+                        <li><a href="#">Blog & Insights</a></li>
+                        <li><a onclick="switchView('contact')" style="cursor: pointer;">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Solutions</h4>
+                    <ul class="footer-links">
+                        <li><a onclick="switchView('services')" style="cursor: pointer;">Worker Management</a></li>
+                        <li><a onclick="switchView('services')" style="cursor: pointer;">Data Automation</a></li>
+                        <li><a onclick="switchView('services')" style="cursor: pointer;">Asset Tracking</a></li>
+                        <li><a onclick="switchView('services')" style="cursor: pointer;">ERP Integrations</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Stay Updated</h4>
+                    <p>Subscribe to our newsletter for the latest in industrial tech.</p>
+                    <form style="display: flex; gap: 0.5rem;" onsubmit="event.preventDefault();">
+                        <input type="email" class="form-control" placeholder="Email Address"
+                            style="padding: 0.5rem 1rem;" required>
+                        <button type="submit" class="btn btn-primary" style="padding: 0.5rem 1rem;">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 PILLAROPS Technology Solutions. All rights reserved.</p>
+                <div style="display: flex; gap: 1.5rem;">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Security Compliance</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chatbot Widget Placeholder -->
+    <div class="glass"
+        style="position: fixed; bottom: 2rem; right: 2rem; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; cursor: pointer; z-index: 1000; background: var(--primary); color: white; border: none; box-shadow: 0 10px 25px rgba(10, 77, 156, 0.4);">
+        💬
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // --- Navigation and View Switching Logic ---
+        function switchView(viewId) {
+            // Hide all views
+            document.querySelectorAll('.view').forEach(view => {
+                view.classList.remove('active');
+            });
+
+            // Show target view
+            document.getElementById('view-' + viewId).classList.add('active');
+
+            // Update nav active state
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                if (link.getAttribute('data-target') === viewId) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            // Close mobile menu if open
+            const navLinks = document.getElementById('navLinks');
+            if (navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+            }
+
+            // Re-trigger scroll animations for the new view
+            setTimeout(() => initScrollAnimations(), 100);
+        }
+
+        // Attach click events to nav links
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                const target = e.target.getAttribute('data-target');
+                if (target) switchView(target);
+            });
+        });
+
+        // Mobile Menu Toggle
+        document.getElementById('mobileMenuBtn').addEventListener('click', () => {
+            document.getElementById('navLinks').classList.toggle('active');
+        });
+
+        // --- Theme Toggle Logic ---
+        const themeToggle = document.getElementById('themeToggle');
+        const htmlEl = document.documentElement;
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = htmlEl.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            htmlEl.setAttribute('data-theme', newTheme);
+            themeToggle.innerHTML = newTheme === 'dark' ? '☀️' : '🌙';
+        });
+
+        // --- Scroll Logic ---
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Intersection Observer for Scroll Animations
+        function initScrollAnimations() {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        // Optional: stop observing once animated
+                        // observer.unobserve(entry.target); 
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.reveal').forEach(el => {
+                // reset for view switches
+                el.classList.remove('active');
+                observer.observe(el);
+            });
+        }
+
+        // Initialize on load
+        window.addEventListener('DOMContentLoaded', () => {
+            initScrollAnimations();
+        });
+    </script>
+</body>
+
+</html>
